@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-service
+  namespace: web-namespace
+spec:
+  selector:
+    app: flask
+  ports:
+    - protocol: "TCP"
+      port: 5000
+      targetPort: 5000
+      nodePort: 30000 #port for external ip address between 30000-32767
+  type: NodePort
