@@ -166,7 +166,7 @@ Now we can send the payload via Postman and check the queue contents the same wa
 
 We will be using [minikube](https://minikube.sigs.k8s.io/docs/start/) to run our cluster locally. 
 
-:warning: This documantation was written with the assumtion that minikube will be used, functionallity is not guaranteed if you use any other local cluster tools or cloud providers and the commands below will not work!
+:warning: This documentation was written with the assumtion that minikube will be used, functionallity is not guaranteed if you use any other local cluster tools or cloud providers and the commands below will not work!
 
 Start your minikube cluster using:
 ```bash
