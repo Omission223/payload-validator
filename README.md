@@ -3,6 +3,10 @@
 # Documentation/How to use
 ## Running web service locally
 
+:warning: These steps assumed you downloaded the zip directly from Github. If you cloned the repo using proper git commands then the perent directory `payload-validator-main` is simplified to `payload-validator`, adjust the commands below accordingly.
+
+:warning: Some of the commands might require elevated permissions. If you get errors similar to "permission denied" or "command not found", try adding `sudo` in front of the commands.
+
 You can, If you wish, run things on your local machine, without using Docker and/or Kubernetes
 
 For that to work, you will need to install RabbitMQ following instructions found [HERE](https://www.rabbitmq.com/download.html)
@@ -20,8 +24,6 @@ Then you can simply run the app via terminal using:
 python3 payload-validator-main/app-directory/flask_app.py
 ```
 Or launching using an IDE like [VSCODE](https://code.visualstudio.com/)
-
-:warning: These steps assumed you downloaded the zip directly from Github. If you cloned the repo using proper git commands then the perent directory `payload-validator-main` is simplified to `payload-validator`, adjust the commands above and below accordingly.
 
 ---
 
@@ -117,6 +119,9 @@ Now that we got basic usage out of the way, we can implement this using Docker c
 
 You will need to install and configure [Docker engine](https://docs.docker.com/engine/install/) or [Docker desktop](https://docs.docker.com/get-docker/) beforehand.
 
+:warning: Make sure to stop your local instances of Flask app and RabbitMQ before you try to use Docker, otherwise you might get Port conflicts and things will not work,
+steps to do so will vary depending on your OS and installation method!
+
 First, let’s start with RabbitMQ.
  
 Create a new Docker network using this command:
@@ -170,20 +175,31 @@ We will be using [minikube](https://minikube.sigs.k8s.io/docs/start/) to run our
 
 :warning: This documentation was written with the assumtion that minikube will be used, functionallity is not guaranteed if you use any other local cluster tools or cloud providers and the commands below will not work!
 
+:warning: kubectl must also be installed, if kubectl commands below fail, try following troubleshoot steps from [HERE](https://www.containiq.com/post/kubctl-command-not-found)
+
 Start your minikube cluster using:
 ```bash
 minikube start --driver=docker
 ```
 It will start your cluster using Docker as your VM, assuming you followed previous steps, you should have docker already installed on your machine, so it makes sense to use it instead of downloading something else additionally.
 
+:warning: If your minikube fails to start, try to add your user to the docker group by running:
+```bash
+ sudo usermod -aG docker $USER && newgrp docker
+```
 
-First, we need to make sure that minikube has access to local image repository by running this:
+Now check if your minikube cluster is running properly:
+```bash
+ minikube status
+```
+
+Now we need to let minikube have access to local image repository by running this:
 ```bash
 eval $(minikube docker-env)
 ```
 :warning: This command needs to be entered every time we start our minikube cluster so that correct repository is selected.
 
-Rebuild our Docker images inside our new local image repository
+Navigate back to the `payload-validator-main` directory and rebuild our Docker images inside our new local image repository
 ```bash
 docker build -t flask-app:latest ./app-directory
 docker build -t rabbitmq:latest ./rabbitmq-directory
