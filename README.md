@@ -1,4 +1,4 @@
-# Flask and Rabbitmq based web service with message queue
+# Flask and RabbitMQ based payload validator and message queue
 
 # Documentation/How to use
 ## Running web service locally
