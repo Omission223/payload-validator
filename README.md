@@ -7,7 +7,7 @@ You can, If you wish, run things on your local machine, without using Docker and
 
 For that to work, you will need to install RabbitMQ following instructions found [HERE](https://www.rabbitmq.com/download.html)
 
-You will also need to have [Python3](https://www.python.org/downloads/) installed so you can either run the app via terminal or using your favourite IDE
+You will also need to have [Python3](https://www.python.org/downloads/) and [pip](https://pip.pypa.io/en/stable/installation) installed so you can either run the app via terminal or using your favourite IDE
 
 Then, to get required packages installed in one go, you can use the provided `requirements.txt` file that is located inside `app-directory` directory.
 
