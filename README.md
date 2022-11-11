@@ -21,6 +21,8 @@ python3 payload-validator-main/app-directory/flask_app.py
 ```
 Or launching using an IDE like [VSCODE](https://code.visualstudio.com/)
 
+:warning: These steps assumed you downloaded the zip directly from Github. If you cloned the repo using proper git commands then the perent directory `payload-validator-main` is simplified to `payload-validator`, adjust the commands above and below accordingly.
+
 ---
 
 ### Sending a JSON payload
