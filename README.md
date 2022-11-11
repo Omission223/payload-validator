@@ -5,7 +5,7 @@
 
 :warning: These steps assumed you downloaded the zip directly from Github. If you cloned the repo using proper git commands then the perent directory `payload-validator-main` is simplified to `payload-validator`, adjust the commands below accordingly.
 
-:warning: Some of the commands might require elevated permissions. If you get errors similar to "permission denied" or "command not found", try adding `sudo` in front of the commands.
+:warning: Some of the commands might require elevated permissions. If you get errors similar to `permission denied` or `command not found`, try adding `sudo` in front of the commands.
 
 You can, If you wish, run things on your local machine, without using Docker and/or Kubernetes
 
